@@ -3,8 +3,34 @@ import { useLanguage } from '../context/LanguageContext'
 import { Link } from 'react-router-dom'
 
 const Cart = ({ isOpen, onClose }) => {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const { cart, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart()
+
+  // Helper function to translate common values
+  const translateValue = (value) => {
+    if (!value) return value
+    const lowerValue = value.toLowerCase()
+    const translationMap = {
+      'small': t('small'),
+      'medium': t('medium'),
+      'large': t('large'),
+      'extra large': t('extraLarge'),
+      'extra-large': t('extraLarge'),
+      'whole milk': language === 'ar' ? 'حليب كامل' : language === 'fr' ? 'Lait entier' : 'Whole Milk',
+      'skim milk': language === 'ar' ? 'حليب خالي الدسم' : language === 'fr' ? 'Lait écrémé' : 'Skim Milk',
+      'almond milk': language === 'ar' ? 'حليب اللوز' : language === 'fr' ? 'Lait d\'amande' : 'Almond Milk',
+      'soy milk': language === 'ar' ? 'حليب الصويا' : language === 'fr' ? 'Lait de soja' : 'Soy Milk',
+      'oat milk': language === 'ar' ? 'حليب الشوفان' : language === 'fr' ? 'Lait d\'avoine' : 'Oat Milk',
+      'no sugar': language === 'ar' ? 'بدون سكر' : language === 'fr' ? 'Sans sucre' : 'No Sugar',
+      'low sugar': language === 'ar' ? 'قليل السكر' : language === 'fr' ? 'Peu de sucre' : 'Low Sugar',
+      'medium sugar': language === 'ar' ? 'سكر متوسط' : language === 'fr' ? 'Sucre moyen' : 'Medium Sugar',
+      'high sugar': language === 'ar' ? 'كثير السكر' : language === 'fr' ? 'Beaucoup de sucre' : 'High Sugar'
+    }
+    return translationMap[lowerValue] || value
+  }
+
+  // Allergen keys for translation
+  const allergenKeys = ['peanuts', 'treeNuts', 'dairy', 'eggs', 'gluten', 'soy', 'fish', 'shellfish', 'sesame']
 
   if (!isOpen) return null
 
@@ -50,25 +76,38 @@ const Cart = ({ isOpen, onClose }) => {
                       {item.customizations && Object.keys(item.customizations).length > 0 && (
                         <div className="text-xs text-gray-400 mt-1 space-y-1">
                           {item.customizations.size && (
-                            <p>Size: {item.customizations.size}</p>
+                            <p>{t('sizeLabel')}: {translateValue(item.customizations.size)}</p>
                           )}
                           {item.customizations.milk_type && (
-                            <p>Milk: {item.customizations.milk_type}</p>
+                            <p>{t('milkLabel')}: {translateValue(item.customizations.milk_type)}</p>
                           )}
                           {item.customizations.sugar_level && (
-                            <p>Sugar: {item.customizations.sugar_level}</p>
+                            <p>{t('sugarLabel')}: {translateValue(item.customizations.sugar_level)}</p>
                           )}
                           {item.customizations.allergies && item.customizations.allergies.length > 0 && (
-                            <p className="text-orange-500">⚠️ Allergies: {item.customizations.allergies.join(', ')}</p>
+                            <p className="text-orange-500">⚠️ {t('allergiesLabel')}: {item.customizations.allergies.map(a => {
+                              // Allergies are stored as keys (peanuts, treeNuts, etc.), translate them
+                              const allergenKeys = ['peanuts', 'treeNuts', 'dairy', 'eggs', 'gluten', 'soy', 'fish', 'shellfish', 'sesame']
+                              if (allergenKeys.includes(a)) {
+                                return t(a)
+                              }
+                              // Fallback: try common variations
+                              const allergenKeyMap = {
+                                'tree nuts': 'treeNuts',
+                                'tree_nuts': 'treeNuts'
+                              }
+                              const key = allergenKeyMap[a.toLowerCase()]
+                              return key ? t(key) : a
+                            }).join(', ')}</p>
                           )}
                           {item.customizations.salt_reduction && (
-                            <p className="text-blue-500">🔵 Low Salt</p>
+                            <p className="text-blue-500">🔵 {t('lowSalt')}</p>
                           )}
                           {item.customizations.special_instructions && (
-                            <p className="italic">Note: {item.customizations.special_instructions}</p>
+                            <p className="italic">{t('noteLabel')}: {item.customizations.special_instructions}</p>
                           )}
                           {item.customizations.extras && item.customizations.extras.length > 0 && (
-                            <p>Extras: {item.customizations.extras.join(', ')}</p>
+                            <p>{t('extrasLabel')}: {item.customizations.extras.join(', ')}</p>
                           )}
                         </div>
                       )}
@@ -76,14 +115,16 @@ const Cart = ({ isOpen, onClose }) => {
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="px-2 py-1 bg-gray-200 rounded"
+                        className="px-3 py-1 bg-coffee-brown text-white rounded hover:bg-coffee-dark transition font-bold text-lg dark:bg-coffee-brown dark:hover:bg-coffee-dark"
+                        aria-label="Decrease quantity"
                       >
-                        -
+                        −
                       </button>
-                      <span>{item.quantity}</span>
+                      <span className="font-semibold text-gray-700 dark:text-gray-300 min-w-[2rem] text-center">{item.quantity}</span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="px-2 py-1 bg-gray-200 rounded"
+                        className="px-3 py-1 bg-coffee-brown text-white rounded hover:bg-coffee-dark transition font-bold text-lg dark:bg-coffee-brown dark:hover:bg-coffee-dark"
+                        aria-label="Increase quantity"
                       >
                         +
                       </button>

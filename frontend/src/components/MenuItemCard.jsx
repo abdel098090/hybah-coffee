@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
 import { useLanguage } from '../context/LanguageContext'
 import api from '../services/api'
 
 const MenuItemCard = ({ item }) => {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const { addToCart } = useCart()
   const { isVIP } = useAuth()
   const [showCustomize, setShowCustomize] = useState(false)
@@ -18,6 +18,29 @@ const MenuItemCard = ({ item }) => {
     salt_reduction: false,
     special_instructions: ''
   })
+
+  // Helper function to translate common values
+  const translateValue = (value) => {
+    if (!value) return value
+    const lowerValue = value.toLowerCase()
+    const translationMap = {
+      'small': t('small'),
+      'medium': t('medium'),
+      'large': t('large'),
+      'extra large': t('extraLarge'),
+      'extra-large': t('extraLarge'),
+      'whole milk': language === 'ar' ? 'حليب كامل' : language === 'fr' ? 'Lait entier' : 'Whole Milk',
+      'skim milk': language === 'ar' ? 'حليب خالي الدسم' : language === 'fr' ? 'Lait écrémé' : 'Skim Milk',
+      'almond milk': language === 'ar' ? 'حليب اللوز' : language === 'fr' ? 'Lait d\'amande' : 'Almond Milk',
+      'soy milk': language === 'ar' ? 'حليب الصويا' : language === 'fr' ? 'Lait de soja' : 'Soy Milk',
+      'oat milk': language === 'ar' ? 'حليب الشوفان' : language === 'fr' ? 'Lait d\'avoine' : 'Oat Milk',
+      'no sugar': language === 'ar' ? 'بدون سكر' : language === 'fr' ? 'Sans sucre' : 'No Sugar',
+      'low sugar': language === 'ar' ? 'قليل السكر' : language === 'fr' ? 'Peu de sucre' : 'Low Sugar',
+      'medium sugar': language === 'ar' ? 'سكر متوسط' : language === 'fr' ? 'Sucre moyen' : 'Medium Sugar',
+      'high sugar': language === 'ar' ? 'كثير السكر' : language === 'fr' ? 'Beaucoup de sucre' : 'High Sugar'
+    }
+    return translationMap[lowerValue] || value
+  }
 
   // Don't show VIP-only items to non-VIP users
   if (item.is_vip_only && !isVIP) {
@@ -46,7 +69,19 @@ const MenuItemCard = ({ item }) => {
     })
   }
 
-  const commonAllergens = ['Peanuts', 'Tree Nuts', 'Dairy', 'Eggs', 'Gluten', 'Soy', 'Fish', 'Shellfish', 'Sesame']
+  // Reset customizations when language changes
+  useEffect(() => {
+    if (showCustomize) {
+      setCustomizations(prev => ({
+        ...prev,
+        size: prev.size || 'Medium'
+      }))
+    }
+  }, [language, showCustomize])
+
+  // Allergens with translation keys
+  const allergenKeys = ['peanuts', 'treeNuts', 'dairy', 'eggs', 'gluten', 'soy', 'fish', 'shellfish', 'sesame']
+  const commonAllergens = allergenKeys.map(key => ({ key, label: t(key) }))
   
   const handleAllergyToggle = (allergen) => {
     setCustomizations(prev => ({
@@ -112,7 +147,7 @@ const MenuItemCard = ({ item }) => {
                   className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:text-white"
                 >
                   {item.customization_options.sizes.map(size => (
-                    <option key={size} value={size}>{size}</option>
+                    <option key={size} value={size}>{translateValue(size)}</option>
                   ))}
                 </select>
               </div>
@@ -128,7 +163,7 @@ const MenuItemCard = ({ item }) => {
                 >
                   <option value="">{t('selectMilkType')}</option>
                   {item.customization_options.milk_types.map(milk => (
-                    <option key={milk} value={milk}>{milk}</option>
+                    <option key={milk} value={milk}>{translateValue(milk)}</option>
                   ))}
                 </select>
               </div>
@@ -144,7 +179,7 @@ const MenuItemCard = ({ item }) => {
                 >
                   <option value="">{t('selectSugarLevel')}</option>
                   {item.customization_options.sugar_levels.map(level => (
-                    <option key={level} value={level}>{level}</option>
+                    <option key={level} value={level}>{translateValue(level)}</option>
                   ))}
                 </select>
               </div>
@@ -155,14 +190,14 @@ const MenuItemCard = ({ item }) => {
               <label className="block mb-2 font-semibold">{t('allergiesToAvoid')}</label>
               <div className="grid grid-cols-2 gap-2">
                 {commonAllergens.map(allergen => (
-                  <label key={allergen} className="flex items-center space-x-2 cursor-pointer">
+                  <label key={allergen.key} className="flex items-center space-x-2 cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={customizations.allergies.includes(allergen)}
-                      onChange={() => handleAllergyToggle(allergen)}
+                      checked={customizations.allergies.includes(allergen.key)}
+                      onChange={() => handleAllergyToggle(allergen.key)}
                       className="rounded"
                     />
-                    <span className="text-sm">{allergen}</span>
+                    <span className="text-sm">{allergen.label}</span>
                   </label>
                 ))}
               </div>
@@ -187,7 +222,7 @@ const MenuItemCard = ({ item }) => {
               <textarea
                 value={customizations.special_instructions}
                 onChange={(e) => setCustomizations({ ...customizations, special_instructions: e.target.value })}
-                placeholder="Any special requests or dietary requirements..."
+                placeholder={t('specialInstructionsPlaceholder')}
                 className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:text-white"
                 rows="3"
               />
@@ -196,7 +231,7 @@ const MenuItemCard = ({ item }) => {
             {/* Extras (if available) */}
             {item.customization_options?.extras && item.customization_options.extras.length > 0 && (
               <div className="mb-4">
-                <label className="block mb-2 font-semibold">Add Extras</label>
+                <label className="block mb-2 font-semibold">{t('addExtras')}</label>
                 <div className="space-y-2">
                   {item.customization_options.extras.map(extra => (
                     <label key={extra.name} className="flex items-center justify-between cursor-pointer">

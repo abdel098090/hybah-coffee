@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null)
 
   // Placeholder images - replace with actual restaurant images
   const galleryImages = [
@@ -50,12 +50,59 @@ const Gallery = () => {
   ]
 
   const openModal = (image) => {
-    setSelectedImage(image)
+    const index = galleryImages.findIndex(img => img.id === image.id)
+    setSelectedImageIndex(index)
   }
 
   const closeModal = () => {
-    setSelectedImage(null)
+    setSelectedImageIndex(null)
   }
+
+  const goToPrevious = (e) => {
+    e.stopPropagation()
+    if (selectedImageIndex !== null) {
+      const prevIndex = selectedImageIndex === 0 
+        ? galleryImages.length - 1 
+        : selectedImageIndex - 1
+      setSelectedImageIndex(prevIndex)
+    }
+  }
+
+  const goToNext = (e) => {
+    e.stopPropagation()
+    if (selectedImageIndex !== null) {
+      const nextIndex = selectedImageIndex === galleryImages.length - 1 
+        ? 0 
+        : selectedImageIndex + 1
+      setSelectedImageIndex(nextIndex)
+    }
+  }
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedImageIndex === null) return
+      
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        const prevIndex = selectedImageIndex === 0 
+          ? galleryImages.length - 1 
+          : selectedImageIndex - 1
+        setSelectedImageIndex(prevIndex)
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        const nextIndex = selectedImageIndex === galleryImages.length - 1 
+          ? 0 
+          : selectedImageIndex + 1
+        setSelectedImageIndex(nextIndex)
+      } else if (e.key === 'Escape') {
+        closeModal()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedImageIndex, galleryImages.length])
 
   return (
     <section id="gallery" className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -93,28 +140,58 @@ const Gallery = () => {
         </div>
 
         {/* Modal for enlarged image */}
-        {selectedImage && (
+        {selectedImageIndex !== null && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
             onClick={closeModal}
           >
             <div className="relative max-w-4xl w-full">
+              {/* Close Button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 text-white text-4xl hover:text-coffee-cream transition z-10"
+                className="absolute top-4 right-4 text-white text-4xl hover:text-coffee-cream transition z-10 bg-black/50 rounded-full w-10 h-10 flex items-center justify-center"
                 aria-label="Close"
               >
                 ×
               </button>
+
+              {/* Previous Arrow */}
+              <button
+                onClick={goToPrevious}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-coffee-cream transition z-10 bg-black/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70"
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+
+              {/* Next Arrow */}
+              <button
+                onClick={goToNext}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-coffee-cream transition z-10 bg-black/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70"
+                aria-label="Next image"
+              >
+                ›
+              </button>
+
+              {/* Image */}
               <img
-                src={selectedImage.src}
-                alt={selectedImage.alt}
+                src={galleryImages[selectedImageIndex].src}
+                alt={galleryImages[selectedImageIndex].alt}
                 className="w-full h-auto rounded-lg"
                 onClick={(e) => e.stopPropagation()}
               />
+              
+              {/* Image Info */}
               <div className="mt-4 text-center text-white">
-                <h3 className="text-2xl font-semibold mb-2">{selectedImage.title}</h3>
-                <p className="text-gray-300">{selectedImage.description}</p>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {galleryImages[selectedImageIndex].title}
+                </h3>
+                <p className="text-gray-300 mb-2">
+                  {galleryImages[selectedImageIndex].description}
+                </p>
+                <p className="text-sm text-gray-400">
+                  {selectedImageIndex + 1} / {galleryImages.length}
+                </p>
               </div>
             </div>
           </div>

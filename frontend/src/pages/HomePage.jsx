@@ -29,14 +29,26 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-coffee-brown via-coffee-dark to-coffee-brown text-white overflow-hidden">
         {/* Background Image Overlay */}
+        {/* Alternative image options:
+            Coffee Machine: 'url(https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=1920&q=80)'
+            Espresso: 'url(https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=1920&q=80)' (current)
+            Burger: 'url(https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1920&q=80)'
+            Coffee Beans: 'url(https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1920&q=80)'
+        */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920)',
-            backgroundBlendMode: 'overlay'
+            backgroundImage: 'url(https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=1920&q=80)',
+            backgroundBlendMode: 'multiply'
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-coffee-brown/90 via-coffee-dark/85 to-coffee-brown/90"></div>
+          {/* Overlay color options:
+              Warm Amber: 'from-slate-900/75 via-amber-950/70 to-slate-900/75' (current)
+              Rich Brown: 'from-amber-900/80 via-amber-800/75 to-amber-900/80'
+              Dark Coffee: 'from-stone-900/80 via-stone-800/75 to-stone-900/80'
+              Chocolate: 'from-amber-950/85 via-amber-900/80 to-amber-950/85'
+          */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/75 via-amber-950/70 to-slate-900/75"></div>
         </div>
         
         {/* Animated Background Elements */}

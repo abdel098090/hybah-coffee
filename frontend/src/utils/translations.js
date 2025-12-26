@@ -73,7 +73,35 @@ export const translations = {
     reduceSalt: 'Reduce Salt / Low Sodium',
     specialInstructions: 'Special Instructions / Notes',
     selectMilkType: 'Select milk type',
-    selectSugarLevel: 'Select sugar level'
+    selectSugarLevel: 'Select sugar level',
+    addExtras: 'Add Extras',
+    specialInstructionsPlaceholder: 'Any special requests or dietary requirements...',
+    
+    // Cart labels
+    sizeLabel: 'Size',
+    milkLabel: 'Milk',
+    sugarLabel: 'Sugar',
+    allergiesLabel: 'Allergies',
+    lowSalt: 'Low Salt',
+    noteLabel: 'Note',
+    extrasLabel: 'Extras',
+    
+    // Allergens
+    peanuts: 'Peanuts',
+    treeNuts: 'Tree Nuts',
+    dairy: 'Dairy',
+    eggs: 'Eggs',
+    gluten: 'Gluten',
+    soy: 'Soy',
+    fish: 'Fish',
+    shellfish: 'Shellfish',
+    sesame: 'Sesame',
+    
+    // Size options
+    small: 'Small',
+    medium: 'Medium',
+    large: 'Large',
+    extraLarge: 'Extra Large'
   },
   ar: {
     // Navigation
@@ -149,7 +177,35 @@ export const translations = {
     reduceSalt: 'تقليل الملح / قليل الصوديوم',
     specialInstructions: 'تعليمات خاصة / ملاحظات',
     selectMilkType: 'اختر نوع الحليب',
-    selectSugarLevel: 'اختر مستوى السكر'
+    selectSugarLevel: 'اختر مستوى السكر',
+    addExtras: 'إضافة إضافات',
+    specialInstructionsPlaceholder: 'أي طلبات خاصة أو متطلبات غذائية...',
+    
+    // Cart labels
+    sizeLabel: 'الحجم',
+    milkLabel: 'الحليب',
+    sugarLabel: 'السكر',
+    allergiesLabel: 'الحساسيات',
+    lowSalt: 'قليل الملح',
+    noteLabel: 'ملاحظة',
+    extrasLabel: 'إضافات',
+    
+    // Allergens
+    peanuts: 'الفول السوداني',
+    treeNuts: 'المكسرات',
+    dairy: 'منتجات الألبان',
+    eggs: 'البيض',
+    gluten: 'الغلوتين',
+    soy: 'الصويا',
+    fish: 'السمك',
+    shellfish: 'المحار',
+    sesame: 'السمسم',
+    
+    // Size options
+    small: 'صغير',
+    medium: 'متوسط',
+    large: 'كبير',
+    extraLarge: 'كبير جداً'
   },
   fr: {
     // Navigation
@@ -225,7 +281,35 @@ export const translations = {
     reduceSalt: 'Réduire le sel / Faible en sodium',
     specialInstructions: 'Instructions spéciales / Notes',
     selectMilkType: 'Sélectionner le type de lait',
-    selectSugarLevel: 'Sélectionner le niveau de sucre'
+    selectSugarLevel: 'Sélectionner le niveau de sucre',
+    addExtras: 'Ajouter des extras',
+    specialInstructionsPlaceholder: 'Toute demande spéciale ou exigence alimentaire...',
+    
+    // Cart labels
+    sizeLabel: 'Taille',
+    milkLabel: 'Lait',
+    sugarLabel: 'Sucre',
+    allergiesLabel: 'Allergies',
+    lowSalt: 'Faible en sel',
+    noteLabel: 'Note',
+    extrasLabel: 'Extras',
+    
+    // Allergens
+    peanuts: 'Arachides',
+    treeNuts: 'Noix',
+    dairy: 'Produits laitiers',
+    eggs: 'Œufs',
+    gluten: 'Gluten',
+    soy: 'Soja',
+    fish: 'Poisson',
+    shellfish: 'Fruits de mer',
+    sesame: 'Sésame',
+    
+    // Size options
+    small: 'Petit',
+    medium: 'Moyen',
+    large: 'Grand',
+    extraLarge: 'Très grand'
   }
 }
 

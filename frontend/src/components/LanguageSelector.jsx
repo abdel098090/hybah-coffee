@@ -17,12 +17,12 @@ const LanguageSelector = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 hover:bg-coffee-dark rounded transition"
+        className="flex items-center space-x-2 px-3 py-2 hover:bg-coffee-dark rounded transition text-white font-medium"
         aria-label="Change language"
       >
         <span>{currentLang.flag}</span>
-        <span className="hidden md:inline">{currentLang.name}</span>
-        <span className="text-xs">▼</span>
+        <span className="hidden md:inline text-white">{currentLang.name}</span>
+        <span className="text-xs text-white opacity-80">▼</span>
       </button>
 
       {isOpen && (
@@ -39,8 +39,8 @@ const LanguageSelector = () => {
                   changeLanguage(lang.code)
                   setIsOpen(false)
                 }}
-                className={`w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center space-x-2 ${
-                  language === lang.code ? 'bg-coffee-cream dark:bg-coffee-brown' : ''
+                className={`w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center space-x-2 text-gray-800 dark:text-white ${
+                  language === lang.code ? 'bg-coffee-cream dark:bg-coffee-brown text-coffee-brown dark:text-white font-semibold' : 'text-gray-800 dark:text-gray-200'
                 }`}
               >
                 <span>{lang.flag}</span>
