@@ -89,6 +89,7 @@ export const translations = {
     hours: '7:00 AM - 9:00 PM',
     findUs: 'Find Us',
     mapsPlaceholder: 'Google Maps integration would go here',
+    viewOnGoogleMaps: 'View on Google Maps',
     
     // Feedback Page
     feedbackTitle: 'Share Your Feedback',
@@ -247,6 +248,7 @@ export const translations = {
     hours: '7:00 صباحاً - 9:00 مساءً',
     findUs: 'اعثر علينا',
     mapsPlaceholder: 'تكامل خرائط جوجل سيظهر هنا',
+    viewOnGoogleMaps: 'عرض على خرائط جوجل',
     
     // Feedback Page
     feedbackTitle: 'شاركنا رأيك',
@@ -452,6 +454,7 @@ export const translations = {
     hours: '7h00 - 21h00',
     findUs: 'Trouvez-nous',
     mapsPlaceholder: 'L\'intégration Google Maps irait ici',
+    viewOnGoogleMaps: 'Voir sur Google Maps',
     
     // Feedback Page
     feedbackTitle: 'Partagez votre avis',

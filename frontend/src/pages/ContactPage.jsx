@@ -107,21 +107,25 @@ const ContactPage = () => {
               <div>
                 <h3 className="font-semibold mb-2">{t('addressLabel')}</h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  123 Coffee Street<br />
-                  City, State 12345<br />
-                  United States
+                  43H7+98R, Boulevard du President N'Garta Tombalbaye<br />
+                  4EME RONDISSEMENT<br />
+                  N'Djamena, Chad
                 </p>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">{t('phoneLabelContact')}</h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  (555) 123-4567
+                  <a href="tel:+23562003284" className="hover:text-coffee-brown dark:hover:text-coffee-cream transition">
+                    +235 62 00 32 84
+                  </a>
                 </p>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">{t('emailLabelContact')}</h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  info@hybahcoffee.com
+                  <a href="mailto:info@hybahcoffee.com" className="hover:text-coffee-brown dark:hover:text-coffee-cream transition">
+                    info@hybahcoffee.com
+                  </a>
                 </p>
               </div>
               <div>
@@ -134,13 +138,31 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Google Maps placeholder */}
+          {/* Google Maps */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-semibold mb-4">{t('findUs')}</h2>
-            <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-              <p className="text-gray-600 dark:text-gray-400">
-                {t('mapsPlaceholder')}
-              </p>
+            <div className="h-64 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5!2d15.05!3d12.11!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA2JzM2LjAiTiAxNcKwMDMnMDAuMCJF!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus&q=Hybah+coffee+house+Boulevard+du+President+N%27Garta+Tombalbaye+N%27Djamena+Chad"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Hybah Coffee House Location"
+                className="w-full h-full"
+              ></iframe>
+            </div>
+            <div className="mt-4">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Hybah+coffee+house+N'Djamena+Chad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-coffee-brown dark:text-coffee-cream hover:underline font-semibold inline-flex items-center gap-2"
+              >
+                {t('viewOnGoogleMaps')} →
+              </a>
             </div>
           </div>
         </div>

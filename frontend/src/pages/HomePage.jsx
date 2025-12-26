@@ -25,7 +25,7 @@ const HomePage = () => {
   }
 
   return (
-    <div>
+    <div className="bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-coffee-brown via-coffee-dark to-coffee-brown text-white overflow-hidden">
         {/* Background Image Overlay */}
@@ -103,29 +103,29 @@ const HomePage = () => {
       </section>
 
       {/* Signature Offerings */}
-      <section className="py-20 container mx-auto px-4">
+      <section className="py-20 container mx-auto px-4 bg-gray-50 dark:bg-gray-900">
         <h2 className="text-4xl font-bold text-center mb-4 text-coffee-brown dark:text-coffee-cream">
           {t('signatureOfferings')}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center p-6 rounded-lg bg-coffee-cream dark:bg-gray-800 hover:shadow-lg transition transform hover:scale-105">
+          <div className="text-center p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
             <div className="text-6xl mb-4">☕</div>
-            <h3 className="text-2xl font-semibold mb-2">Premium Coffee</h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <h3 className="text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">Premium Coffee</h3>
+            <p className="text-gray-700 dark:text-gray-300">
               {t('premiumCoffeeDesc')}
             </p>
           </div>
-          <div className="text-center p-6 rounded-lg bg-coffee-cream dark:bg-gray-800 hover:shadow-lg transition transform hover:scale-105">
+          <div className="text-center p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
             <div className="text-6xl mb-4">🍽️</div>
-            <h3 className="text-2xl font-semibold mb-2">{t('chadianCuisine')}</h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <h3 className="text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">{t('chadianCuisine')}</h3>
+            <p className="text-gray-700 dark:text-gray-300">
               {t('chadianCuisineDesc')}
             </p>
           </div>
-          <div className="text-center p-6 rounded-lg bg-coffee-cream dark:bg-gray-800 hover:shadow-lg transition transform hover:scale-105">
+          <div className="text-center p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
             <div className="text-6xl mb-4">👑</div>
-            <h3 className="text-2xl font-semibold mb-2">{t('vipExperience')}</h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <h3 className="text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">{t('vipExperience')}</h3>
+            <p className="text-gray-700 dark:text-gray-300">
               {t('vipExperienceDesc')}
             </p>
           </div>
