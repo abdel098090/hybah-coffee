@@ -93,7 +93,7 @@ const MenuItemCard = ({ item }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border border-gray-200 dark:border-gray-700">
       <div className="relative h-48 bg-gray-200 dark:bg-gray-700">
         {item.image_url ? (
           <img
@@ -113,10 +113,10 @@ const MenuItemCard = ({ item }) => {
         )}
       </div>
       <div className="p-4">
-        <h3 className="text-xl font-semibold mb-2 text-coffee-brown dark:text-white">
+        <h3 className="text-xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">
           {item.name}
         </h3>
-        <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
+        <p className="text-gray-700 dark:text-gray-300 text-sm mb-3 line-clamp-2">
           {item.description}
         </p>
         <div className="flex items-center justify-between">

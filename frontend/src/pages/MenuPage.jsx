@@ -91,7 +91,7 @@ const MenuPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
       <h1 className="text-4xl font-bold mb-8 text-coffee-brown dark:text-coffee-cream">
         {t('ourMenu')}
       </h1>
@@ -127,7 +127,7 @@ const MenuPage = () => {
       {/* Menu Items Grid */}
       {filteredItems.length > 0 ? (
         <>
-          <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+          <div className="mb-4 text-sm text-gray-700 dark:text-gray-300">
             <strong>Showing {filteredItems.length} item{filteredItems.length !== 1 ? 's' : ''}</strong>
             {selectedCategory !== 'all' && ` in ${categories.find(c => c.value === selectedCategory)?.label || selectedCategory}`}
             {menuItems.length > 0 && ` (${menuItems.length} total items available)`}
