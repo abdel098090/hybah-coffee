@@ -4,28 +4,28 @@ const AboutPage = () => {
   const { t } = useLanguage()
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-coffee-brown dark:text-coffee-cream">
+    <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 text-coffee-brown dark:text-coffee-cream">
         {t('aboutTitle')}
       </h1>
 
-      <div className="max-w-3xl space-y-8">
+      <div className="max-w-3xl space-y-6 sm:space-y-8">
         <section>
-          <h2 className="text-2xl font-semibold mb-4">{t('ourStory')}</h2>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">{t('ourStory')}</h2>
+          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
             {t('ourStoryText')}
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-4">{t('ourMission')}</h2>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">{t('ourMission')}</h2>
+          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
             {t('ourMissionText')}
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-4">{t('ourValues')}</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">{t('ourValues')}</h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
             <li>{t('value1')}</li>
             <li>{t('value2')}</li>

@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-coffee-brown via-coffee-dark to-coffee-brown text-white overflow-hidden">
+      <section className="relative min-h-screen sm:h-screen flex items-center justify-center bg-gradient-to-br from-coffee-brown via-coffee-dark to-coffee-brown text-white overflow-hidden py-16 sm:py-0">
         {/* Background Image Overlay */}
         {/* Alternative image options:
             Coffee Machine: 'url(https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=1920&q=80)'
@@ -58,36 +58,36 @@ const HomePage = () => {
         </div>
 
         <div className="text-center z-10 px-4 max-w-4xl mx-auto">
-          <div className="mb-6 animate-fade-in">
-            <span className="inline-block px-4 py-2 bg-coffee-cream/20 backdrop-blur-sm rounded-full text-coffee-cream text-sm font-semibold mb-4 border border-coffee-cream/30">
+          <div className="mb-4 sm:mb-6 animate-fade-in">
+            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-coffee-cream/20 backdrop-blur-sm rounded-full text-coffee-cream text-xs sm:text-sm font-semibold mb-4 border border-coffee-cream/30">
               🇹🇩 Authentic Chadian Cuisine in Chad
             </span>
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in delay-200">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 animate-fade-in delay-200 px-2">
             {t('welcome')}
           </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl mb-4 text-coffee-cream font-light animate-fade-in delay-300">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-3 sm:mb-4 text-coffee-cream font-light animate-fade-in delay-300 px-2">
             {t('premiumCoffee')}
           </p>
-          <p className="text-lg md:text-xl mb-10 text-coffee-cream/90 max-w-2xl mx-auto animate-fade-in delay-400">
+          <p className="text-sm sm:text-lg md:text-xl mb-6 sm:mb-10 text-coffee-cream/90 max-w-2xl mx-auto animate-fade-in delay-400 px-2">
             {t('experience')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in delay-500 px-2">
             <Link
               to="/menu"
-              className="px-8 py-4 bg-white text-coffee-brown rounded-lg font-semibold hover:bg-coffee-cream transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-white text-coffee-brown rounded-lg font-semibold hover:bg-coffee-cream transition-all transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base"
             >
               {t('orderOnline')}
             </Link>
             <Link
               to="/reservations"
-              className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-coffee-brown transition-all transform hover:scale-105 backdrop-blur-sm"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-coffee-brown transition-all transform hover:scale-105 backdrop-blur-sm text-sm sm:text-base"
             >
               {t('reserveSeat')}
             </Link>
             <Link
               to="/vip"
-              className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-coffee-brown transition-all transform hover:scale-105 backdrop-blur-sm"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-coffee-brown transition-all transform hover:scale-105 backdrop-blur-sm text-sm sm:text-base"
             >
               {t('joinVIP')}
             </Link>
@@ -103,29 +103,29 @@ const HomePage = () => {
       </section>
 
       {/* Signature Offerings */}
-      <section className="py-20 container mx-auto px-4 bg-gray-50 dark:bg-gray-900">
-        <h2 className="text-4xl font-bold text-center mb-4 text-coffee-brown dark:text-coffee-cream">
+      <section className="py-12 sm:py-20 container mx-auto px-4 bg-gray-50 dark:bg-gray-900">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 text-coffee-brown dark:text-coffee-cream px-2">
           {t('signatureOfferings')}
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
-            <div className="text-6xl mb-4">☕</div>
-            <h3 className="text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">Premium Coffee</h3>
-            <p className="text-gray-700 dark:text-gray-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          <div className="text-center p-4 sm:p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
+            <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">☕</div>
+            <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">Premium Coffee</h3>
+            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
               {t('premiumCoffeeDesc')}
             </p>
           </div>
-          <div className="text-center p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
-            <div className="text-6xl mb-4">🍽️</div>
-            <h3 className="text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">{t('chadianCuisine')}</h3>
-            <p className="text-gray-700 dark:text-gray-300">
+          <div className="text-center p-4 sm:p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
+            <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">🍽️</div>
+            <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">{t('chadianCuisine')}</h3>
+            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
               {t('chadianCuisineDesc')}
             </p>
           </div>
-          <div className="text-center p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
-            <div className="text-6xl mb-4">👑</div>
-            <h3 className="text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">{t('vipExperience')}</h3>
-            <p className="text-gray-700 dark:text-gray-300">
+          <div className="text-center p-4 sm:p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition transform hover:scale-105">
+            <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">👑</div>
+            <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">{t('vipExperience')}</h3>
+            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
               {t('vipExperienceDesc')}
             </p>
           </div>

@@ -14,6 +14,7 @@ const Layout = ({ children }) => {
   const { t } = useLanguage()
   const navigate = useNavigate()
   const [cartOpen, setCartOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const handleLogout = () => {
     logout()
@@ -25,10 +26,11 @@ const Layout = ({ children }) => {
       <nav className="bg-coffee-brown dark:bg-gray-800 text-white shadow-lg">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="text-2xl font-bold">
-              ☕ Hybah Coffee House
+            <Link to="/" className="text-xl sm:text-2xl font-bold truncate">
+              ☕ <span className="hidden sm:inline">Hybah Coffee House</span><span className="sm:hidden">Hybah</span>
             </Link>
             
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
               <Link to="/" className="hover:text-coffee-cream transition">{t('home')}</Link>
               <Link to="/menu" className="hover:text-coffee-cream transition">{t('menu')}</Link>
@@ -52,12 +54,16 @@ const Layout = ({ children }) => {
               )}
             </div>
             
-            <div className="flex items-center space-x-4">
-              <LanguageSelector />
+            {/* Right side buttons */}
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <div className="hidden sm:block">
+                <LanguageSelector />
+              </div>
               
               <button
                 onClick={() => setCartOpen(true)}
                 className="relative p-2 hover:bg-coffee-dark rounded transition"
+                aria-label="Shopping cart"
               >
                 🛒
                 {getCartItemCount() > 0 && (
@@ -75,23 +81,147 @@ const Layout = ({ children }) => {
                 {theme === 'dark' ? '☀️' : '🌙'}
               </button>
               
-              {isAuthenticated ? (
-                <button
-                  onClick={handleLogout}
-                  className="px-4 py-2 bg-coffee-dark hover:bg-gray-700 rounded transition"
-                >
-                  {t('logout')}
-                </button>
-              ) : (
-                <Link
-                  to="/login"
-                  className="px-4 py-2 bg-coffee-dark hover:bg-gray-700 rounded transition"
-                >
-                  {t('login')}
-                </Link>
-              )}
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 hover:bg-coffee-dark rounded transition"
+                aria-label="Menu"
+              >
+                {mobileMenuOpen ? '✕' : '☰'}
+              </button>
+              
+              {/* Desktop Login/Logout */}
+              <div className="hidden md:block">
+                {isAuthenticated ? (
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 bg-coffee-dark hover:bg-gray-700 rounded transition text-sm"
+                  >
+                    {t('logout')}
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="px-4 py-2 bg-coffee-dark hover:bg-gray-700 rounded transition text-sm"
+                  >
+                    {t('login')}
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
+          
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden border-t border-coffee-dark py-4">
+              <div className="flex flex-col space-y-3">
+                <Link 
+                  to="/" 
+                  className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t('home')}
+                </Link>
+                <Link 
+                  to="/menu" 
+                  className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t('menu')}
+                </Link>
+                <Link 
+                  to="/about" 
+                  className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t('about')}
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t('contact')}
+                </Link>
+                <Link 
+                  to="/feedback" 
+                  className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t('feedback')}
+                </Link>
+                
+                {isAuthenticated && (
+                  <>
+                    <Link 
+                      to="/account" 
+                      className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t('account')}
+                    </Link>
+                    <Link 
+                      to="/orders" 
+                      className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t('orders')}
+                    </Link>
+                    {user?.vip_status && (
+                      <Link 
+                        to="/vip" 
+                        className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        VIP
+                      </Link>
+                    )}
+                    <Link 
+                      to="/loyalty" 
+                      className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Rewards
+                    </Link>
+                  </>
+                )}
+                
+                {user?.role === 'admin' && (
+                  <Link 
+                    to="/admin" 
+                    className="px-4 py-2 hover:bg-coffee-dark rounded transition"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Admin
+                  </Link>
+                )}
+                
+                <div className="px-4 py-2 border-t border-coffee-dark mt-2 pt-2">
+                  <LanguageSelector />
+                </div>
+                
+                {isAuthenticated ? (
+                  <button
+                    onClick={() => {
+                      handleLogout()
+                      setMobileMenuOpen(false)
+                    }}
+                    className="px-4 py-2 bg-coffee-dark hover:bg-gray-700 rounded transition text-left"
+                  >
+                    {t('logout')}
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="px-4 py-2 bg-coffee-dark hover:bg-gray-700 rounded transition text-left block"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {t('login')}
+                  </Link>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
       

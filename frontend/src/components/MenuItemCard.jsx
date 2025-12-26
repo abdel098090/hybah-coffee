@@ -134,17 +134,17 @@ const MenuItemCard = ({ item }) => {
 
       {/* Customization Modal */}
       {showCustomize && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-2xl font-bold mb-4">{t('customize')} {item.name}</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-2 sm:p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 max-w-md w-full mx-2 sm:mx-4 max-h-[95vh] overflow-y-auto">
+            <h3 className="text-2xl font-bold mb-4 text-coffee-brown dark:text-coffee-cream">{t('customize')} {item.name}</h3>
             
             {item.customization_options?.sizes && (
               <div className="mb-4">
-                <label className="block mb-2 font-semibold">{t('size')}</label>
+                <label className="block mb-2 font-semibold text-gray-800 dark:text-gray-200">{t('size')}</label>
                 <select
                   value={customizations.size}
                   onChange={(e) => setCustomizations({ ...customizations, size: e.target.value })}
-                  className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border rounded bg-white text-gray-800 dark:bg-gray-700 dark:text-white"
                 >
                   {item.customization_options.sizes.map(size => (
                     <option key={size} value={size}>{translateValue(size)}</option>
@@ -155,11 +155,11 @@ const MenuItemCard = ({ item }) => {
 
             {item.customization_options?.milk_types && (
               <div className="mb-4">
-                <label className="block mb-2 font-semibold">{t('milkType')}</label>
+                <label className="block mb-2 font-semibold text-gray-800 dark:text-gray-200">{t('milkType')}</label>
                 <select
                   value={customizations.milk_type}
                   onChange={(e) => setCustomizations({ ...customizations, milk_type: e.target.value })}
-                  className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border rounded bg-white text-gray-800 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">{t('selectMilkType')}</option>
                   {item.customization_options.milk_types.map(milk => (
@@ -171,11 +171,11 @@ const MenuItemCard = ({ item }) => {
 
             {item.customization_options?.sugar_levels && (
               <div className="mb-4">
-                <label className="block mb-2 font-semibold">{t('sugarLevel')}</label>
+                <label className="block mb-2 font-semibold text-gray-800 dark:text-gray-200">{t('sugarLevel')}</label>
                 <select
                   value={customizations.sugar_level}
                   onChange={(e) => setCustomizations({ ...customizations, sugar_level: e.target.value })}
-                  className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2 border rounded bg-white text-gray-800 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">{t('selectSugarLevel')}</option>
                   {item.customization_options.sugar_levels.map(level => (
@@ -187,7 +187,7 @@ const MenuItemCard = ({ item }) => {
 
             {/* Allergy Information */}
             <div className="mb-4">
-              <label className="block mb-2 font-semibold">{t('allergiesToAvoid')}</label>
+              <label className="block mb-2 font-semibold text-gray-800 dark:text-gray-200">{t('allergiesToAvoid')}</label>
               <div className="grid grid-cols-2 gap-2">
                 {commonAllergens.map(allergen => (
                   <label key={allergen.key} className="flex items-center space-x-2 cursor-pointer">
@@ -197,7 +197,7 @@ const MenuItemCard = ({ item }) => {
                       onChange={() => handleAllergyToggle(allergen.key)}
                       className="rounded"
                     />
-                    <span className="text-sm">{allergen.label}</span>
+                    <span className="text-sm text-gray-800 dark:text-gray-200">{allergen.label}</span>
                   </label>
                 ))}
               </div>
@@ -212,18 +212,18 @@ const MenuItemCard = ({ item }) => {
                   onChange={(e) => setCustomizations({ ...customizations, salt_reduction: e.target.checked })}
                   className="rounded"
                 />
-                <span className="font-semibold">{t('reduceSalt')}</span>
+                <span className="font-semibold text-gray-800 dark:text-gray-200">{t('reduceSalt')}</span>
               </label>
             </div>
 
             {/* Special Instructions */}
             <div className="mb-4">
-              <label className="block mb-2 font-semibold">{t('specialInstructions')}</label>
+              <label className="block mb-2 font-semibold text-gray-800 dark:text-gray-200">{t('specialInstructions')}</label>
               <textarea
                 value={customizations.special_instructions}
                 onChange={(e) => setCustomizations({ ...customizations, special_instructions: e.target.value })}
                 placeholder={t('specialInstructionsPlaceholder')}
-                className="w-full px-3 py-2 border rounded dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border rounded bg-white text-gray-800 dark:bg-gray-700 dark:text-white"
                 rows="3"
               />
             </div>
@@ -231,13 +231,13 @@ const MenuItemCard = ({ item }) => {
             {/* Extras (if available) */}
             {item.customization_options?.extras && item.customization_options.extras.length > 0 && (
               <div className="mb-4">
-                <label className="block mb-2 font-semibold">{t('addExtras')}</label>
+                <label className="block mb-2 font-semibold text-gray-800 dark:text-gray-200">{t('addExtras')}</label>
                 <div className="space-y-2">
                   {item.customization_options.extras.map(extra => (
                     <label key={extra.name} className="flex items-center justify-between cursor-pointer">
-                      <span>{extra.name}</span>
+                      <span className="text-gray-800 dark:text-gray-200">{extra.name}</span>
                       <div className="flex items-center space-x-2">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">+${extra.price?.toFixed(2) || '0.00'}</span>
+                        <span className="text-sm text-gray-700 dark:text-gray-400">+${extra.price?.toFixed(2) || '0.00'}</span>
                         <input
                           type="checkbox"
                           checked={customizations.extras.includes(extra.name)}

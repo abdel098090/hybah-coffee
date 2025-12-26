@@ -26,15 +26,15 @@ const ContactPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-coffee-brown dark:text-coffee-cream">
+    <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 text-coffee-brown dark:text-coffee-cream">
         {t('contactTitle')}
       </h1>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
         {/* Contact Form */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-semibold mb-4">{t('sendMessage')}</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4">{t('sendMessage')}</h2>
           
           {submitted && (
             <div className="mb-4 p-3 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200 rounded">
@@ -101,8 +101,8 @@ const ContactPage = () => {
 
         {/* Contact Information */}
         <div className="space-y-6">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-semibold mb-4">{t('getInTouch')}</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">{t('getInTouch')}</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">{t('addressLabel')}</h3>
@@ -139,9 +139,9 @@ const ContactPage = () => {
           </div>
 
           {/* Google Maps */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-semibold mb-4">{t('findUs')}</h2>
-            <div className="h-64 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">{t('findUs')}</h2>
+            <div className="h-48 sm:h-64 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5!2d15.05!3d12.11!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA2JzM2LjAiTiAxNcKwMDMnMDAuMCJF!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus&q=Hybah+coffee+house+Boulevard+du+President+N%27Garta+Tombalbaye+N%27Djamena+Chad"
                 width="100%"

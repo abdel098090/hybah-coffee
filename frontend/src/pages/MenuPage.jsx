@@ -91,20 +91,20 @@ const MenuPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8 text-coffee-brown dark:text-coffee-cream">
+    <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 text-coffee-brown dark:text-coffee-cream">
         {t('ourMenu')}
       </h1>
 
       {/* Search and Filter */}
-      <div className="mb-8 space-y-4">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="mb-4 sm:mb-8 space-y-3 sm:space-y-4">
+        <div className="flex flex-col md:flex-row gap-3 sm:gap-4">
           <input
             type="text"
             placeholder={t('searchMenu')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white"
+            className="flex-1 px-3 sm:px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white text-sm sm:text-base"
           />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -112,7 +112,7 @@ const MenuPage = () => {
             <button
               key={category.value}
               onClick={() => setSelectedCategory(category.value)}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg transition text-xs sm:text-sm ${
                 selectedCategory === category.value
                   ? 'bg-coffee-brown text-white'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
@@ -132,7 +132,7 @@ const MenuPage = () => {
             {selectedCategory !== 'all' && ` in ${categories.find(c => c.value === selectedCategory)?.label || selectedCategory}`}
             {menuItems.length > 0 && ` (${menuItems.length} total items available)`}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredItems.map(item => (
               <MenuItemCard key={item.id} item={item} />
             ))}

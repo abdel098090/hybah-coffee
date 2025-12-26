@@ -57,11 +57,11 @@ const FeedbackPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-8 text-coffee-brown dark:text-coffee-cream">
+    <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-2xl">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 text-coffee-brown dark:text-coffee-cream">
         {t('feedbackTitle')}
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-8">
+      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">
         {t('feedbackDescription')}
       </p>
 
