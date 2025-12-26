@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybah Coffee House - Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --coffee-brown: #6F4E37;
+            --coffee-cream: #F5E6D3;
+            --coffee-dark: #2D5016;
+        }
+        .coffee-brown { background-color: var(--coffee-brown); }
+        .coffee-cream { background-color: var(--coffee-cream); }
+        .coffee-dark { background-color: var(--coffee-dark); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="coffee-brown text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="text-2xl font-bold">☕ Hybah Coffee House</div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="hover:text-coffee-cream transition">Home</a>
+                    <a href="#" class="hover:text-coffee-cream transition">Menu</a>
+                    <a href="#" class="hover:text-coffee-cream transition">About</a>
+                    <a href="#" class="hover:text-coffee-cream transition">Contact</a>
+                    <button class="px-4 py-2 bg-coffee-dark hover:bg-gray-700 rounded transition">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-gradient-to-r from-amber-800 to-amber-900 text-white overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="text-center z-10 px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Welcome to Hybah Coffee House</h1>
+            <p class="text-xl md:text-2xl mb-8 text-amber-100">Premium Coffee & Dining Experience</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-8 py-3 bg-white text-amber-900 rounded-lg font-semibold hover:bg-amber-50 transition transform hover:scale-105">
+                    Order Online
+                </button>
+                <button class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-amber-900 transition transform hover:scale-105">
+                    Reserve a Seat
+                </button>
+                <button class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-amber-900 transition transform hover:scale-105">
+                    Join VIP
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Offerings -->
+    <section class="py-20 container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12" style="color: var(--coffee-brown);">
+            Our Signature Offerings
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center p-6 rounded-lg bg-amber-50 hover:shadow-lg transition">
+                <div class="text-6xl mb-4">☕</div>
+                <h3 class="text-2xl font-semibold mb-2">Premium Coffee</h3>
+                <p class="text-gray-600">Handcrafted with the finest beans from around the world</p>
+            </div>
+            <div class="text-center p-6 rounded-lg bg-amber-50 hover:shadow-lg transition">
+                <div class="text-6xl mb-4">🍔</div>
+                <h3 class="text-2xl font-semibold mb-2">Gourmet Burgers</h3>
+                <p class="text-gray-600">Fresh ingredients, bold flavors, made to order</p>
+            </div>
+            <div class="text-center p-6 rounded-lg bg-amber-50 hover:shadow-lg transition">
+                <div class="text-6xl mb-4">👑</div>
+                <h3 class="text-2xl font-semibold mb-2">VIP Experience</h3>
+                <p class="text-gray-600">Exclusive benefits and priority service</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" style="color: var(--coffee-brown);">
+                Our Menu
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 bg-amber-200 flex items-center justify-center text-6xl">☕</div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--coffee-brown);">Espresso</h3>
+                        <p class="text-gray-600 text-sm mb-3">Rich and bold Italian espresso</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold" style="color: var(--coffee-dark);">$3.50</span>
+                            <button class="px-4 py-2 coffee-brown text-white rounded hover:opacity-90 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 bg-amber-200 flex items-center justify-center text-6xl">🍔</div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--coffee-brown);">Classic Burger</h3>
+                        <p class="text-gray-600 text-sm mb-3">Juicy beef patty with fresh vegetables</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold" style="color: var(--coffee-dark);">$12.99</span>
+                            <button class="px-4 py-2 coffee-brown text-white rounded hover:opacity-90 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 bg-amber-200 flex items-center justify-center text-6xl">🥐</div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--coffee-brown);">Croissant</h3>
+                        <p class="text-gray-600 text-sm mb-3">Buttery, flaky French pastry</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold" style="color: var(--coffee-dark);">$4.50</span>
+                            <button class="px-4 py-2 coffee-brown text-white rounded hover:opacity-90 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-auto">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hybah Coffee House</h3>
+                    <p class="text-gray-400">Premium coffee and dining experience</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Menu</a></li>
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <p class="text-gray-400">Follow us on social media</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-4 text-center text-gray-400">
+                <p>&copy; 2024 Hybah Coffee House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 fixed bottom-0 left-0 right-0" role="alert">
+        <p class="font-bold">Preview Mode</p>
+        <p>This is a static preview. To see the full React application, you need to:</p>
+        <ol class="list-decimal list-inside mt-2">
+            <li>Install npm: <code class="bg-yellow-200 px-2 py-1 rounded">sudo apt install -y npm</code></li>
+            <li>Run: <code class="bg-yellow-200 px-2 py-1 rounded">cd frontend && npm install && npm run dev</code></li>
+            <li>Open: <code class="bg-yellow-200 px-2 py-1 rounded">http://localhost:3000</code></li>
+        </ol>
+    </div>
+</body>
+</html>
+

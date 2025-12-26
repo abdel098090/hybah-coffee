@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Menu API</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .item { border: 1px solid #ddd; padding: 10px; margin: 5px; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Menu API Test</h1>
+    <button onclick="testAPI()">Test Menu API</button>
+    <div id="result"></div>
+    
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result')
+            resultDiv.innerHTML = '<p>Testing...</p>'
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/menu')
+                const data = await response.json()
+                
+                if (Array.isArray(data)) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ SUCCESS! Found ${data.length} menu items</p>
+                        <h2>Items:</h2>
+                        <div>${data.map(item => `
+                            <div class="item">
+                                <strong>${item.name}</strong> - $${item.price} (${item.category})
+                            </div>
+                        `).join('')}</div>
+                    `
+                } else {
+                    resultDiv.innerHTML = `<p class="error">❌ ERROR: Response is not an array</p><pre>${JSON.stringify(data, null, 2)}</pre>`
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ ERROR: ${error.message}</p><p>Make sure backend is running on port 5000</p>`
+            }
+        }
+        
+        // Auto-test on load
+        window.onload = testAPI
+    </script>
+</body>
+</html>
+
