@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 
 const ContactPage = () => {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,23 +28,23 @@ const ContactPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-coffee-brown dark:text-coffee-cream">
-        Contact Us
+        {t('contactTitle')}
       </h1>
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Contact Form */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-semibold mb-4">Send us a Message</h2>
+          <h2 className="text-2xl font-semibold mb-4">{t('sendMessage')}</h2>
           
           {submitted && (
             <div className="mb-4 p-3 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200 rounded">
-              Thank you for your message! We'll get back to you soon.
+              {t('thankYouMessage')}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block mb-2 font-semibold">Name</label>
+              <label className="block mb-2 font-semibold">{t('nameLabel')}</label>
               <input
                 type="text"
                 name="name"
@@ -54,7 +56,7 @@ const ContactPage = () => {
             </div>
 
             <div>
-              <label className="block mb-2 font-semibold">Email</label>
+              <label className="block mb-2 font-semibold">{t('emailLabel')}</label>
               <input
                 type="email"
                 name="email"
@@ -66,7 +68,7 @@ const ContactPage = () => {
             </div>
 
             <div>
-              <label className="block mb-2 font-semibold">Phone</label>
+              <label className="block mb-2 font-semibold">{t('phoneLabel')}</label>
               <input
                 type="tel"
                 name="phone"
@@ -77,7 +79,7 @@ const ContactPage = () => {
             </div>
 
             <div>
-              <label className="block mb-2 font-semibold">Message</label>
+              <label className="block mb-2 font-semibold">{t('messageLabel')}</label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -92,7 +94,7 @@ const ContactPage = () => {
               type="submit"
               className="w-full px-4 py-2 bg-coffee-brown text-white rounded-lg hover:bg-coffee-dark transition"
             >
-              Send Message
+              {t('sendMessageButton')}
             </button>
           </form>
         </div>
@@ -100,10 +102,10 @@ const ContactPage = () => {
         {/* Contact Information */}
         <div className="space-y-6">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('getInTouch')}</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">Address</h3>
+                <h3 className="font-semibold mb-2">{t('addressLabel')}</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   123 Coffee Street<br />
                   City, State 12345<br />
@@ -111,22 +113,22 @@ const ContactPage = () => {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Phone</h3>
+                <h3 className="font-semibold mb-2">{t('phoneLabelContact')}</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   (555) 123-4567
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Email</h3>
+                <h3 className="font-semibold mb-2">{t('emailLabelContact')}</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   info@hybahcoffee.com
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Business Hours</h3>
+                <h3 className="font-semibold mb-2">{t('businessHours')}</h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Monday - Sunday<br />
-                  7:00 AM - 9:00 PM
+                  {t('mondaySunday')}<br />
+                  {t('hours')}
                 </p>
               </div>
             </div>
@@ -134,10 +136,10 @@ const ContactPage = () => {
 
           {/* Google Maps placeholder */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <h2 className="text-2xl font-semibold mb-4">Find Us</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('findUs')}</h2>
             <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
               <p className="text-gray-600 dark:text-gray-400">
-                Google Maps integration would go here
+                {t('mapsPlaceholder')}
               </p>
             </div>
           </div>

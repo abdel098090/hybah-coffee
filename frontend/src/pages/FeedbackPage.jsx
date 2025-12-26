@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import { useLanguage } from '../context/LanguageContext'
 import api from '../services/api'
 
 const FeedbackPage = () => {
   const { user, isAuthenticated } = useAuth()
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     rating: 5,
     comment: '',
@@ -57,19 +59,18 @@ const FeedbackPage = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
       <h1 className="text-4xl font-bold mb-8 text-coffee-brown dark:text-coffee-cream">
-        Share Your Feedback
+        {t('feedbackTitle')}
       </h1>
       <p className="text-gray-600 dark:text-gray-400 mb-8">
-        We value your opinion! Your feedback helps us improve our service and menu. 
-        Please note that reviews are subject to approval before being displayed.
+        {t('feedbackDescription')}
       </p>
 
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         {submitted && (
           <div className="mb-6 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200 rounded-lg">
-            <p className="font-semibold">Thank you for your feedback!</p>
+            <p className="font-semibold">{t('thankYouFeedback')}</p>
             <p className="text-sm mt-1">
-              Your review has been submitted and will be reviewed before being published.
+              {t('feedbackSubmitted')}
             </p>
           </div>
         )}
@@ -85,14 +86,14 @@ const FeedbackPage = () => {
           {!isAuthenticated && (
             <div>
               <label className="block mb-2 font-semibold">
-                Your Name <span className="text-gray-500 text-sm">(optional)</span>
+                {t('yourName')} <span className="text-gray-500 text-sm">{t('optional')}</span>
               </label>
               <input
                 type="text"
                 name="customer_name"
                 value={formData.customer_name}
                 onChange={handleChange}
-                placeholder="Enter your name"
+                placeholder={t('enterYourName')}
                 className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white"
               />
             </div>
@@ -100,7 +101,7 @@ const FeedbackPage = () => {
 
           {/* Rating */}
           <div>
-            <label className="block mb-3 font-semibold">Rating</label>
+            <label className="block mb-3 font-semibold">{t('rating')}</label>
             <div className="flex items-center space-x-2">
               {[1, 2, 3, 4, 5].map((rating) => (
                 <button
@@ -112,7 +113,7 @@ const FeedbackPage = () => {
                       ? 'text-yellow-400'
                       : 'text-gray-300 dark:text-gray-600'
                   }`}
-                  aria-label={`Rate ${rating} stars`}
+                  aria-label={`${t('rating')} ${rating}`}
                 >
                   ★
                 </button>
@@ -126,7 +127,7 @@ const FeedbackPage = () => {
           {/* Comment */}
           <div>
             <label className="block mb-2 font-semibold">
-              Your Feedback <span className="text-red-500">*</span>
+              {t('yourFeedback')} <span className="text-red-500">*</span>
             </label>
             <textarea
               name="comment"
@@ -134,11 +135,11 @@ const FeedbackPage = () => {
               onChange={handleChange}
               required
               rows="6"
-              placeholder="Tell us about your experience at Hybah Coffee House..."
+              placeholder={t('feedbackPlaceholder')}
               className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white"
             />
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-              Minimum 10 characters
+              {t('minimumChars')}
             </p>
           </div>
 
@@ -147,7 +148,7 @@ const FeedbackPage = () => {
             disabled={loading || formData.comment.length < 10}
             className="w-full px-6 py-3 bg-coffee-brown text-white rounded-lg hover:bg-coffee-dark transition disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
           >
-            {loading ? 'Submitting...' : 'Submit Feedback'}
+            {loading ? t('submitting') : t('submitFeedback')}
           </button>
         </form>
       </div>
@@ -155,13 +156,13 @@ const FeedbackPage = () => {
       {/* Info Box */}
       <div className="mt-8 bg-coffee-cream dark:bg-gray-800 rounded-lg p-6">
         <h3 className="font-semibold mb-2 text-coffee-brown dark:text-coffee-cream">
-          Why Your Feedback Matters
+          {t('whyFeedbackMatters')}
         </h3>
         <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-          <li>• Helps us improve our menu and service quality</li>
-          <li>• Allows us to address any concerns you may have</li>
-          <li>• Helps other customers make informed decisions</li>
-          <li>• Your feedback is reviewed before being published</li>
+          <li>• {t('feedbackReason1')}</li>
+          <li>• {t('feedbackReason2')}</li>
+          <li>• {t('feedbackReason3')}</li>
+          <li>• {t('feedbackReason4')}</li>
         </ul>
       </div>
     </div>
